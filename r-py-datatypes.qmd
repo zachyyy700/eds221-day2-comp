@@ -186,6 +186,57 @@ fruit[3, 1]
 fruit[2, 1] <- "pineapple"
 ```
 
+## Selecting multiple elements
+```{r}
+x <- 1:10
 
+x[c(3,1,5)]
+x[c(1,1,1)]
 
+# excluding elements
+x[-10]
+x[-c(2,4,6,8,10)]
+```
+
+## Logical vectors
+```{r}
+x[c(TRUE, FALSE, TRUE, TRUE, TRUE,TRUE, FALSE, TRUE, TRUE, TRUE)]
+x[x >3]
+```
+
+## Subsetting & assigning multiple values
+```{r}
+x <- 1:5
+x[c(1,2)] <- 2:3
+
+x[-1] <- 4:1
+```
+
+## Subset rows in df on conditions (logical subsetting)
+
+```{r}
+mtcars[mtcars$gear == 5, ]
+
+mtcars[mtcars$gear == 5 & mtcars$cyl == 4, ]
+
+# shorthand version
+subset(mtcars, gear == 5)
+subset(mtcars, gear == 5 & cyl == 4)
+```
+
+## Removing cols
+```{r}
+df <- data.frame(x = 1:3,
+                 y = 3:1,
+                 z = c("a", "b", "c"))
+# remove z
+df$z <- NULL
+
+# subsetting
+df[c("x", "y")]
+
+#compare names, toss z out
+setdiff(names(df), "z")
+df[setdiff(names(df), "z")]
+```
 
