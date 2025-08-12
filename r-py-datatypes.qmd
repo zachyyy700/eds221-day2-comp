@@ -1,0 +1,191 @@
+---
+title: "r-py-data-types"
+author: "zachyloo"
+format: html
+editor: visual
+execute: 
+  warning: false
+  messages: false
+---
+
+## Making vectors
+```{r}
+# a char vector
+dogs <- c("teddy", "khora", "waffle", "banjo")
+
+typeof(dogs)
+
+# a numeric vector
+weights <- c(50, 55, 25, 35)
+
+# returns double & numeric
+typeof(weights)
+class(weights)
+
+# an integer vector
+dog_age <- c(5L, 6L, 1L, 7L)
+
+# both returns integer
+typeof(dog_age)
+class(dog_age)
+
+# combining classes?
+dog_info <- c("teddy", 50, 5L)
+dog_info
+
+# most flexible class in vector is char
+typeof(dog_info)
+class(dog_info)
+is.character(dog_info)
+
+```
+
+
+## Named elements
+```{r}
+dog_food <- c(teddy = "purina", khora = "alpo", waffle = "fancy feasst", banjo = "blue diamond")
+
+# both return char
+class(dog_food)
+typeof(dog_food)
+
+```
+## Accessing
+```{r}
+# accessing 
+dog_food[2]
+
+dog_food["khora"]
+
+# car example
+cars <- c("red", "orange", "white", "blue", "green", "silver", "black")
+
+cars[5]
+
+# access range
+cars[2:4]
+
+```
+
+### Loop warm up
+```{r}
+# using i to access elements
+i <- 4
+cars[i]
+
+i <- seq(1:3)
+cars[i]
+
+cars[3] <- "avocados from mexico!"
+cars
+```
+
+## Matrices
+
+```{r}
+# specified by col this time
+fish_size <- matrix(c(0.8, 1.2, 0.4, 0.9), ncol = 2, nrow = 2, byrow = FALSE)
+
+fish_size
+
+# returns type of the VALUES
+typeof(fish_size)
+# returns matrix/array
+class(fish_size)
+
+# combining diff types
+dog_walk <- matrix(c("teddy", 5, "khora", 10), ncol = 2, nrow = 2, byrow = FALSE)
+
+dog_walk
+
+# returns matrix/array
+class(dog_walk)
+
+# returns char
+typeof(dog_walk)
+```
+
+### Accessing matrices
+```{r}
+whale_travel <- matrix(data = c(31.8, 1348, 46.9, 1587), nrow = 2, ncol = 2, byrow = TRUE )
+
+whale_travel
+
+# access 1348
+whale_travel[1, 2]
+
+# access 46.9
+whale_travel[2, 1]
+
+# access ALL row 2
+whale_travel[2, ]
+
+# access ALL col 1
+whale_travel[, 1]
+
+# giving only one element, "as if populated by column"
+whale_travel[3]
+```
+
+## Lists
+```{r}
+urchins <- list("blue",
+                c(1, 2, 3),
+                c("a cat", "a dog"),
+                5L)
+
+urchins
+```
+
+### Accessing within lists
+
+```{r}
+# must use [[]]
+urchins[[2]]
+
+# compare with []
+urchins[2]
+```
+
+### Naming list items
+```{r}
+tacos <- list(topping = c("onion", "cilantro", "guacamole"), 
+              filling = c("beans", "meat", "veggie"), 
+              price = c(6.75, 8.25, 9.50))
+
+# The whole thing
+tacos
+
+tacos[[2]]
+
+# OR
+tacos$filling
+```
+
+## Data frames
+
+```{r}
+fruit <- data.frame(type = c("apple", "banana", "peach"),
+                    mass = c(130, 195, 150))
+
+fruit
+
+# check class
+class(fruit)
+```
+
+### Access elements of df
+
+```{r}
+# [row, col]
+fruit[1, 2]
+
+fruit[3, 1]
+
+# mutable element
+fruit[2, 1] <- "pineapple"
+```
+
+
+
+
